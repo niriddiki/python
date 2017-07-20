@@ -66,7 +66,7 @@ def renderItem(arg):
     arg.grid(row=arg.row, column=arg.column)
 
 
-counter = 0
+counter = [0,]
 
 
 def keyPress(arg):
@@ -87,8 +87,8 @@ def keyPress(arg):
         renderItem(curr)
         renderItem(near)
         # print(near.x)
-    counter = counter + 1
-    print(counter)
+    counter[0] = counter[0] + 1
+    print(counter[0])
 
 
 def gameExit(arg):
@@ -102,26 +102,6 @@ def shuffleGame():
         # print(random_action)
         keyPress(random_action)
 
-    # counter=0
-    #
-    # def counterPlusOne():
-    #     counter = counter+1
-    #     print(counter)
-    # label_1 = tkinter.Label(main_window, text=counter)
-    # label_1.grid(row=5, column=4)
-
-    # def upp(x):
-    #   keyPress('u')
-    # counter = 0
-    # label_1 = tkinter.Label(main_window, text=counter)
-    # label_1.grid(row=5, column=4)
-    # counter+=1
-
-
-# main_window.bind('<Up>', lambda x: keyPress('u'))
-# main_window.bind('<Up>', lambda y: counterPlusOne())
-# main_window.bind('<Up>', upp(x))
-
 
 
 main_window.bind('<Up>', lambda x: keyPress('u'))
@@ -130,7 +110,7 @@ main_window.bind('<Left>', lambda x: keyPress('l'))
 main_window.bind('<Right>', lambda x: keyPress('r'))
 main_window.bind('<q>', gameExit)
 
-label_1 = tkinter.Label(main_window, text=counter)
+label_1 = tkinter.Label(main_window, text=counter[0])
 label_1.grid(row=5, column=4)
 
 main_window.after(2000, shuffleGame)
