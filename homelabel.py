@@ -66,7 +66,7 @@ def renderItem(arg):
     arg.grid(row=arg.row, column=arg.column)
 
 
-counter = [0,]
+counter = [0, ]
 
 
 def keyPress(arg):
@@ -87,8 +87,10 @@ def keyPress(arg):
         renderItem(curr)
         renderItem(near)
         # print(near.x)
-    counter[0] = counter[0] + 1
-    print(counter[0])
+        counter[0] = counter[0] + 1
+        print(counter[0])
+        label_1 = tkinter.Label(main_window, text=counter[0])
+        label_1.grid(row=5, column=4)
 
 
 def gameExit(arg):
@@ -96,12 +98,17 @@ def gameExit(arg):
 
 
 def shuffleGame():
+    # counter = [0,]
+    # label_1 = tkinter.Label(main_window, text=counter[0])
+    # label_1.grid(row=5, column=4)
     actions = ['r', 'l', 'u', 'd']
     for step in range(100):
         random_action = random.sample(actions, 1)[0]
         # print(random_action)
         keyPress(random_action)
-
+    counter[0]=0
+    label_1 = tkinter.Label(main_window, text=counter[0])
+    label_1.grid(row=5, column=4)
 
 
 main_window.bind('<Up>', lambda x: keyPress('u'))
@@ -110,8 +117,8 @@ main_window.bind('<Left>', lambda x: keyPress('l'))
 main_window.bind('<Right>', lambda x: keyPress('r'))
 main_window.bind('<q>', gameExit)
 
-label_1 = tkinter.Label(main_window, text=counter[0])
-label_1.grid(row=5, column=4)
+# label_1 = tkinter.Label(main_window, text=counter[0])
+# label_1.grid(row=5, column=4)
 
-main_window.after(2000, shuffleGame)
+main_window.after(1000, shuffleGame)
 main_window.mainloop()
